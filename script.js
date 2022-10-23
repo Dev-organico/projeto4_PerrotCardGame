@@ -1,23 +1,16 @@
 
 let card_nb;
 
-const cards =[
-    'bobrossparrot.gif',
-    'explodyparrot.gif',
-    'fiestaparrot.gif',
-    'metalparrot.gif',
-    'revertitparrot.gif',
-    'tripletsparrot.gif',
-    'unicornparrot.gif'
-];
+const cards =['bobrossparrot.gif','explodyparrot.gif','fiestaparrot.gif','metalparrot.gif','revertitparrot.gif','tripletsparrot.gif','unicornparrot.gif'];
 
 const selected_cards=[];
 
 
 
 function Number_cards(){
+
     
-    card_nb = Number(prompt('quantas cartas?'))
+    card_nb = Number(prompt('quantas cartas?'));
     
     if(card_nb < 4 || card_nb > 14 || card_nb % 2 !== 0){
         Number_cards()
@@ -47,7 +40,7 @@ function give_cards(){
 
     for(let i = 0; i < selected_cards_random.length;i++){
         element_card.innerHTML +=
-        `<div onclick="turn(this)"  class="carta-completa">
+        `<div id="${selected_cards_random[i]}"    onclick="turn(this)"  class="carta-completa">
             <div  class="face back">
                 <img src="./images/${selected_cards_random[i]}" alt="">
             </div>
@@ -59,13 +52,84 @@ function give_cards(){
     
 }
 
+let clicks = 0;
+let selected_list = [];
+let win_soma = 0;
+let clicks_all = 0;
+let selected_element;
+
 function turn(elemento){
-  elemento.classList.toggle('turn')
+
+    elemento.removeAttribute("onclick");
+
+    elemento.classList.add('turn');
+
+    clicks++
+
+    if(clicks %2 == 0){
+        if(elemento.id == selected_element.id){
+            win_soma += 2
+        }
+        else{
+            setTimeout(()=>{selected_element.classList.remove('turn')},2000);
+            setTimeout(()=>{elemento.classList.remove('turn')},2000);
+            elemento.setAttribute('onclick',"turn(this)")
+            selected_element.setAttribute('onclick',"turn(this)")
+        }
+    }
 
 
-}
+    if(clicks %2 !== 0){
+    selected_element = elemento
+   }
 
-Number_cards()
-       
+   clicks_all++
 
   
+   end()
+
+   
+}
+
+function end(){
+
+    if(win_soma == card_nb){
+        
+
+    setTimeout(()=> alert(`Você ganhou em ${clicks_all} rodadas!`),1000)
+    setTimeout(play_again,2000)
+    selected_cards.length = 0
+    
+    
+    }
+   
+    
+    
+}
+
+
+function play_again(){
+
+    win_soma = 0
+    clicks = 0
+    clicks_all = 0
+
+    let clean = document.querySelector('.game')
+    clean.innerHTML = ''
+
+    let again = prompt('Você quer jogar novamente?')
+
+
+    if(again == 'sim'){
+        Number_cards()
+    }
+    else{
+        play_again()
+    }
+}
+    
+
+Number_cards()
+
+
+       

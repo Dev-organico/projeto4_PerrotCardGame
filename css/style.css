@@ -8,7 +8,6 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
 
 }
 
@@ -19,7 +18,6 @@ body{
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    background-color: aqua;
 }
 p{
     text-align: center;
@@ -34,12 +32,16 @@ p{
     box-sizing: border-box;
     
 }
+
+
 .title_game{
-    width:550px ;
+    width:100% ;
     height:63px ;
     font-size:56px ;
     color:#75B79E ;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .carta-completa{
     width: 117px;
@@ -49,6 +51,7 @@ p{
     position: relative;
     transition: all 400ms ease;
     transform-style: preserve-3d;
+    cursor: pointer;
     
 }
 .face{
@@ -70,12 +73,12 @@ p{
 }
 
 .front{
-    background-color: blue;
+    
     backface-visibility: hidden;
     
 }
 .back{
-    background-color: red;
+    
     
 
 }
@@ -89,6 +92,14 @@ p{
 
     p{
         font-size: 36px;
+
+
+    }
+
+
+    
+    .game {
+    flex-direction: column;
 
     }
 }

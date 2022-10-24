@@ -74,7 +74,7 @@ function turn(elemento){
         if(elemento.id == selected_element.id){
             win_soma += 2
             for(let i = 0; i < elemento_carta.length;i++){
-                setTimeout(()=>elemento_carta[i].setAttribute('onclick',"turn(this)"),2000)}
+                setTimeout(()=>elemento_carta[i].setAttribute('onclick',"turn(this)"),1000)}
             elemento.removeAttribute('onclick')
             selected_element.removeAttribute('onclick')
             
@@ -87,7 +87,7 @@ function turn(elemento){
             //elemento.setAttribute('onclick',"turn(this)")
             //selected_element.setAttribute('onclick',"turn(this)")
             for(let i = 0; i < elemento_carta.length;i++){
-                setTimeout(()=>elemento_carta[i].setAttribute('onclick',"turn(this)"),2000)}
+                setTimeout(()=>elemento_carta[i].setAttribute('onclick',"turn(this)"),1000)}
     
         }
     }

@@ -24,8 +24,10 @@ p{
 }
 .timer{
     display: flex;
-    justify-content: space-between;
-    width: 75px;
+    justify-content: space-evenly;
+    max-width: 90px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .game{
     display: flex;
@@ -93,6 +95,11 @@ p{
     p{
         font-size: 36px;
 
+
+    }
+
+    .timer p{
+        font-size: 18px;
 
     }
 

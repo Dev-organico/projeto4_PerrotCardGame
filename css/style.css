@@ -22,6 +22,11 @@ body{
 p{
     text-align: center;
 }
+.timer{
+    display: flex;
+    justify-content: space-between;
+    width: 75px;
+}
 .game{
     display: flex;
     flex-wrap: wrap;

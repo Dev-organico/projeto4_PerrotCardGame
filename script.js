@@ -9,6 +9,8 @@ const selected_cards=[];
 
 function Number_cards(){
 
+    contador_tempo = 0;
+
     
     card_nb = Number(prompt('Adicione um número par entre 4 e 14:'));
     
@@ -49,6 +51,8 @@ function give_cards(){
             </div>
         </div>`
     }
+    timer()
+    
     
 }
 
@@ -111,9 +115,11 @@ function end(){
     if(win_soma == card_nb){
         
 
-    setTimeout(()=> alert(`Você ganhou em ${clicks_all} rodadas!`),1000)
-    setTimeout(play_again,2000)
-    selected_cards.length = 0
+    setTimeout(()=> alert(`Você ganhou em ${clicks_all} rodadas e em ${contador_tempo} segundos`),1000);
+    setTimeout(play_again,2000);
+    stop_timer();
+    document.querySelector(".tempo").innerHTML = '0';
+    selected_cards.length = 0;
     
     
     }
@@ -142,7 +148,27 @@ function play_again(){
         play_again()
     }
 }
+
+
+
+let contador_tempo = 0;
+let intervalo;
+function timer(){
+
+    intervalo = setInterval(aumentaContador, 1000);
+
+}
+
+function aumentaContador() {
+    contador_tempo++;
+    document.querySelector(".tempo").innerHTML = contador_tempo;
+}
+
+function stop_timer(){
+    clearInterval(intervalo);
     
+}
+
 
 Number_cards()
 

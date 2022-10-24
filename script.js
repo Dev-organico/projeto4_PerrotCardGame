@@ -10,7 +10,7 @@ const selected_cards=[];
 function Number_cards(){
 
     
-    card_nb = Number(prompt('quantas cartas?'));
+    card_nb = Number(prompt('Adicione um número par entre 4 e 14:'));
     
     if(card_nb < 4 || card_nb > 14 || card_nb % 2 !== 0){
         Number_cards()
@@ -67,20 +67,35 @@ function turn(elemento){
     clicks++
 
     if(clicks %2 == 0){
+        let elemento_carta = document.querySelectorAll('.carta-completa')
+        for(let i = 0; i < elemento_carta.length;i++){
+            elemento_carta[i].removeAttribute('onclick');}
+        
         if(elemento.id == selected_element.id){
             win_soma += 2
+            for(let i = 0; i < elemento_carta.length;i++){
+                setTimeout(()=>elemento_carta[i].setAttribute('onclick',"turn(this)"),2100)}
+            elemento.removeAttribute('onclick')
+            selected_element.removeAttribute('onclick')
+            
+            
+        
         }
         else{
             setTimeout(()=>{selected_element.classList.remove('turn')},2000);
             setTimeout(()=>{elemento.classList.remove('turn')},2000);
-            elemento.setAttribute('onclick',"turn(this)")
-            selected_element.setAttribute('onclick',"turn(this)")
+            //elemento.setAttribute('onclick',"turn(this)")
+            //selected_element.setAttribute('onclick',"turn(this)")
+            for(let i = 0; i < elemento_carta.length;i++){
+                setTimeout(()=>elemento_carta[i].setAttribute('onclick',"turn(this)"),2000)}
+    
         }
     }
 
 
     if(clicks %2 !== 0){
     selected_element = elemento
+    
    }
 
    clicks_all++

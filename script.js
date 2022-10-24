@@ -169,7 +169,6 @@ function stop_timer(){
     
 }
 
-
 Number_cards()
 
 
